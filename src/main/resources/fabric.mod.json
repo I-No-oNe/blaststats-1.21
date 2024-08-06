@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "blaststats",
+	"version": "${version}",
+	"name": "BlastStats",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"UHB217"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/blaststats/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.uhb217.blaststats.BlastStats"
+		],
+		"client": [
+			"net.uhb217.blaststats.BlastStatsModClient"
+		]
+	},
+	"mixins": [
+		"blaststats.mixins.json",
+		{
+			"config": "blaststats.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.15.11",
+		"minecraft": "~1.21",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
