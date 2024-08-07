@@ -15,12 +15,14 @@ import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.uhb217.blaststats.events.CrystalExplodeEvent;
 import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
 
 import java.math.BigDecimal;
 
 import static java.math.RoundingMode.HALF_UP;
+import static net.uhb217.blaststats.BlastStats.PREFIX;
 import static net.uhb217.blaststats.BlastStatsModClient.Action.*;
 
 public class BlastStatsModClient implements ClientModInitializer {
@@ -30,7 +32,8 @@ public class BlastStatsModClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		registerKeyBindings();
-		CrystalExplodeEvent.EVENT.register(((world, player) -> {			NbtCompound nbt = ((NBTConfigUtils) player).BlastStats$getPersistentData();
+		CrystalExplodeEvent.EVENT.register(((world, player) -> {
+			NbtCompound nbt = ((NBTConfigUtils) player).BlastStats$getPersistentData();
 			if (nbt != null) {
 				if (!nbt.contains("crystal_explosions"))
 					nbt.putInt("crystal_explosions", 1);
@@ -88,8 +91,8 @@ public class BlastStatsModClient implements ClientModInitializer {
 		NbtCompound nbt = ((NBTConfigUtils) MinecraftClient.getInstance().player).BlastStats$getPersistentData();
 		int explosions = nbt != null && nbt.contains("crystal_explosions")? nbt.getInt("crystal_explosions") : 0;
 		float perSec = BigDecimal.valueOf((double) explosions/(sec-4)).setScale(2,HALF_UP).floatValue();
-		MinecraftClient.getInstance().player.sendMessage(Text.literal("Total amount of explosions: " + explosions
-		+ "\nExplosions per second: " + perSec).formatted(Formatting.DARK_PURPLE), false);
+		MinecraftClient.getInstance().player.sendMessage(Text.literal(PREFIX + "§5Total amount of explosions: " + explosions
+		+ "\n               Explosions per second: " + perSec), false);
 	}
 	private float centeredX(Text text, DrawContext ctx, float scale){return (ctx.getScaledWindowWidth() - MinecraftClient.getInstance().textRenderer.getWidth(text) * scale) /2;}
 	private float centeredY(float scale, DrawContext ctx) {return (ctx.getScaledWindowHeight() - MinecraftClient.getInstance().textRenderer.fontHeight * scale) / 2;}
@@ -119,7 +122,7 @@ public class BlastStatsModClient implements ClientModInitializer {
 			 if (startCounting.wasPressed() && client.world != null) {
 				switch (action){
 					case IDLE: initAnimation();break;
-					case ANIMATE: action = IDLE;MinecraftClient.getInstance().player.sendMessage(Text.literal("Count has bin canceled").formatted(Formatting.DARK_RED));break;
+					case ANIMATE: action = IDLE;MinecraftClient.getInstance().player.sendMessage(Text.literal(PREFIX + "Count has bin canceled").formatted(Formatting.DARK_RED));break;
 					case COUNT: if(sec != 0)endCount();break;
 				}
 			}
