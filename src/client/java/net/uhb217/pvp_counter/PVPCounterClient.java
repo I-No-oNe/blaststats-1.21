@@ -43,7 +43,7 @@ public class PVPCounterClient implements ClientModInitializer, Global {
 				}
 			}
 //			idk why but u need to open the gui via the mod menu and then close it and then press it ingame
-			if (Keybinds.openGui.isPressed() && mc != null){
+			if (Keybinds.openGui.isPressed() && mc.world == null){
 				mc.setScreen(ConfigScreen.configScreen);
 			}
 		});
