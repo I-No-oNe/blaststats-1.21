@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "net.uhb217.blaststats.mixin",
+	"package": "net.uhb217.pvp_counter.mixin",
 	"compatibilityLevel": "JAVA_17",
 	"mixins": [
 	],

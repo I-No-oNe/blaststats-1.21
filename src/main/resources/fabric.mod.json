@@ -1,31 +1,36 @@
 {
 	"schemaVersion": 1,
-	"id": "blaststats",
+	"id": "pvp-counter",
 	"version": "${version}",
-	"name": "BlastStats",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "Pvp-Counter",
+	"description": "Count PVP Stuff for you!",
 	"authors": [
-		"UHB217"
+		"UHB217",
+		"I-No-oNe"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://github.com/uhb217",
+		"sources": "https://github.com/uhb217/pvp-counter"
 	},
 	"license": "CC0-1.0",
-	"icon": "assets/blaststats/icon.png",
+	"icon": "assets/pvp-counter/icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"net.uhb217.blaststats.BlastStats"
+			"net.uhb217.pvp_counter.PVPCounter"
 		],
 		"client": [
-			"net.uhb217.blaststats.BlastStatsModClient"
+			"net.uhb217.pvp_counter.PVPCounterClient"
+		],
+		"modmenu":
+		[
+			"net.uhb217.pvp_counter.config.ModMenu"
 		]
 	},
 	"mixins": [
-		"blaststats.mixins.json",
+		"pvp_counter.mixins.json",
 		{
-			"config": "blaststats.client.mixins.json",
+			"config": "pvp_counter.client.mixins.json",
 			"environment": "client"
 		}
 	],

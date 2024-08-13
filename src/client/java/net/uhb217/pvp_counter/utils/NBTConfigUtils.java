@@ -1,4 +1,4 @@
-package net.uhb217.blaststats;
+package net.uhb217.pvp_counter.utils;
 
 import net.minecraft.nbt.NbtCompound;
 

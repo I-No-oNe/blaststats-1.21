@@ -1,4 +1,4 @@
-package net.uhb217.blaststats.events;
+package net.uhb217.pvp_counter.events;
 
 import net.fabricmc.fabric.api.event.Event;
 import net.fabricmc.fabric.api.event.EventFactory;
